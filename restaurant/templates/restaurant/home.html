@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVABITE | Restaurant</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            padding: 25px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            color: #d4af37;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        nav a:hover {
+            color: #d4af37;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(#000000, #171717);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero span {
+            color: #d4af37;
+        }
+
+        .hero p {
+            color: #cccccc;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        /* MENU SECTION */
+
+        .menu {
+            padding: 80px 8%;
+            background-color: #000000;
+        }
+        
+        .menu-heading {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .menu-subtitle {
+            color: #d4af37;
+            font-size: 13px;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+        
+        .menu-heading h2 {
+            color: #ffffff;
+            font-size: 38px;
+            margin: 15px 0;
+        }
+        
+        .menu-heading h2 span {
+            color: #d4af37;
+        }
+        
+        .menu-heading p {
+            color: #bbbbbb;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        
+        /* MENU GRID */
+        
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        /* FOOD CARDS */
+        
+        .menu-item {
+            background: #151515;
+            border: 1px solid #292929;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-8px);
+            border-color: #d4af37;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.12);
+        }
+        
+        /* FOOD IMAGES */
+        
+        .food-image-container {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .food-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        
+        .menu-item:hover .food-image {
+            transform: scale(1.06);
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: #252525;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #d4af37;
+            gap: 10px;
+        }
+        
+        .image-placeholder span {
+            font-size: 25px;
+            font-weight: bold;
+        }
+        
+        .image-placeholder small {
+            color: #cccccc;
+        }
+        
+        /* CATEGORY */
+        
+        .category-label {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #d4af37;
+            color: #000000;
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        
+        /* MENU CONTENT */
+        
+        .menu-content {
+            padding: 22px;
+        }
+        
+        .menu-content h3 {
+            color: #ffffff;
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+        
+        .food-description {
+            color: #bdbdbd;
+            font-size: 14px;
+            line-height: 1.7;
+            min-height: 48px;
+            margin-bottom: 20px;
+        }
+        
+        /* PRICE AND ORDER BUTTON */
+        
+        .menu-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .price {
+            color: #d4af37;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .order-btn {
+            display: inline-block;
+            background: #d4af37;
+            color: #000000;
+            padding: 11px 17px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+        
+        .order-btn:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+        
+        /* MOBILE RESPONSIVENESS */
+        
+        @media (max-width: 600px) {
+            .menu {
+                padding: 55px 5%;
+            }
+        
+            .menu-heading h2 {
+                font-size: 29px;
+            }
+        
+            .menu-container {
+                grid-template-columns: 1fr;
+            }
+        
+            .food-image-container {
+                height: 230px;
+            }
+        }
+        /* ABOUT US SECTION */
+
+.about {
+    padding: 80px 8%;
+    background: #151515;
+    text-align: center;
+}
+
+.about h2,
+.contact h2 {
+    color: #d4af37;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.about p {
+    color: #cccccc;
+    font-size: 16px;
+    line-height: 1.9;
+    max-width: 850px;
+    margin: auto;
+}
+
+/* RESTAURANT INFORMATION */
+
+.contact {
+    padding: 80px 8%;
+    background: #080808;
+    text-align: center;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.contact-card {
+    background: #151515;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.contact-card h3 {
+    color: #d4af37;
+    margin-bottom: 12px;
+}
+
+.contact-card p,
+.contact-card a {
+    color: #cccccc;
+    text-decoration: none;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 25px 8%;
+    text-align: center;
+    background: #000;
+    color: #bbbbbb;
+    border-top: 1px solid #333;
+}
+
+/* RESPONSIVE HEADER AND SECTIONS */
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 18px;
+        padding: 20px 5%;
+    }
+
+    .logo {
+        font-size: 23px;
+        text-align: center;
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .hero {
+        padding: 65px 15px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .about,
+    .contact {
+        padding: 55px 5%;
+    }
+
+    .about h2,
+    .contact h2 {
+        font-size: 27px;
+    }
+}
+.whatsapp-btn {
+    display: inline-block;
+    background: #25D366;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.whatsapp-btn:hover {
+    background: #1da851;
+}
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">NOVABITE EATERY</div>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="#menu">Our Menu</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Welcome to <span>NOVABITE EATERY</span></h1>
+        <p>Where Homemade Goodness Meets Extraordinary Taste.</p>
+    </section>
+    <section class="menu" id="menu">
+
+        <div class="menu-heading">
+            <span class="menu-subtitle">FRESHLY PREPARED WITH LOVE</span>
+            <h2>Explore Our <span>Delicious Menu</span></h2>
+            <p>Discover delicious meals prepared with fresh ingredients
+               and unforgettable flavours.</p>
+        </div>
+    
+        <div class="menu-container">
+    
+           {% for item in menu_items %} 
+    
+                <div class="menu-item">
+    
+                    <div class="food-image-container">
+                        {% if item.image %}
+                            <img
+                                src="{{ item.image.url }}"
+                                alt="{{ item.name }}"
+                                class="food-image"
+                            >
+                        {% else %}
+                            <div class="image-placeholder">
+                                <span>NOVABITE</span>
+                                <small>Delicious food awaits</small>
+                            </div>
+                        {% endif %}
+    
+                        <span class="category-label">
+                            {{ item.category }}
+                        </span>
+                    </div>
+    
+                    <div class="menu-content">
+    
+                        <h3>{{ item.name }}</h3>
+    
+                        <p class="food-description">
+                            {{ item.description }}
+                        </p>
+    
+                        <div class="menu-bottom">
+    
+                            <span class="price">
+                                ₦{{ item.price|floatformat:2 }}
+                            </span>
+    
+                            <a
+                                href="https://wa.me/2349074721201?text=Hello%20NOVABITE,%20I%20would%20like%20to%20order%20{{ item.name|urlencode }}"
+                                class="order-btn"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Order Now →
+                            </a>
+    
+                        </div>
+    
+                    </div>
+    
+                </div>
+    
+            {% endfor %}
+    
+        </div>
+    
+    </section>
+    <!-- ABOUT US SECTION -->
+<section class="about" id="about">
+    <h2>About NOVABITE EATERY</h2>
+
+    <p>
+        Welcome to NOVABITE EATERY, where delicious food
+        meets exceptional service. We are passionate about
+        preparing tasty meals using quality ingredients and
+        carefully selected spices. From traditional Nigerian
+        dishes to delicious snacks and refreshing drinks,
+        every meal is prepared with care. Our mission is to
+        make every dining experience special and memorable.
+    </p>
+</section>
+
+<!-- RESTAURANT INFORMATION SECTION -->
+<section class="contact" id="contact">
+
+    <h2>Restaurant Information</h2>
+
+    <p style="color: #ccc;">
+        We would love to hear from you. Contact us for
+        enquiries and food orders.
+    </p>
+    <a href="https://wa.me/2349074721201"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="whatsapp-btn">
+    Chat With Us on WhatsApp
+</a>
+
+    <div class="contact-info">
+
+        <div class="contact-card">
+            <h3>Our Restaurant</h3>
+            <p>NOVABITE EATERY</p>
+        </div>
+
+        <div class="contact-card">
+            <h3>Phone / WhatsApp</h3>
+            <p>+234 907 472 1201</p>
+        </div>
+
+        <div class="contact-card">
+            <h3>Location</h3>
+            <p><p>Plot 2 & 3, Water Corporation Drive,
+                Victoria Island, Lagos, Nigeria</p>
+                
+                <a href="https://www.google.com/maps/search/?api=1&query=Plot+2+%26+3+Water+Corporation+Dr+Victoria+Island+Lagos+Nigeria"
+                target="_blank">
+                    Get Directions
+                </a></p>
+        </div>
+
+        <div class="contact-card">
+            <h3>Opening Hours</h3>
+            <p>Monday – Sunday</p>
+            <p>8:00 AM – 9:30 PM</p>
+        </div>
+
+    </div>
+</section>
+    <footer id="contact">
+        <p>© 2026 NOVABITE Restaurant. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
